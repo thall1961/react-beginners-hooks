@@ -1,6 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App";
-import "./css/style.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import AppRouter from './components/AppRouter';
+import './css/style.css';
 
-ReactDOM.render(<App />, document.getElementById("main"));
+ReactDOM.render(<AppRouter />, document.getElementById('main'));
