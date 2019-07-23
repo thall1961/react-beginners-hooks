@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Header from './Header';
 import Inventory from './Inventory';
 import Order from './Order';
@@ -11,20 +11,22 @@ function App(props) {
     const [order, setOrder] = useState({});
 
     useEffect(() => {
-        const ref = base.syncState(`${props.storeId}/fishes`, {
-            context: {
-                setState: ({fishes}) => setFishes({...fishes}),
-                state: {fishes}
-            },
-            state: 'fishes'
-        });
+        // const ref = base.syncState(`${props.storeId}/fishes`, {
+        //     context: {
+        //         setState: fishes => setFishes(fishes),
+        //         state: {fishes}
+        //     },
+        //     state: 'fishes'
+        // });
 
         console.log('effecting');
 
         return () => {
-            base.removeBinding(ref);
+            console.log('unmounting');
+            // base.removeBinding(ref);
         };
-    }, []);
+        // this will run mount, unmount, & update
+    }, [props.storeId, fishes]);
 
     function addFish(fish) {
         const myFishes = {...fishes};
